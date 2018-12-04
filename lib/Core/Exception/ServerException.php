@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Aliyun\Core\Exception;
 
 class ServerException extends ClientException
@@ -8,12 +7,12 @@ class ServerException extends ClientException
     private $httpStatus;
     private $requestId;
 
-    function  __construct($errorMessage, $errorCode, $httpStatus, $requestId)
+    public function __construct($errorMessage, $errorCode, $httpStatus, $requestId)
     {
-        $messageStr = $errorCode . " " . $errorMessage . " HTTP Status: " . $httpStatus . " RequestID: " . $requestId;
+        $messageStr = $errorCode.' '.$errorMessage.' HTTP Status: '.$httpStatus.' RequestID: '.$requestId;
         parent::__construct($messageStr, $errorCode);
         $this->setErrorMessage($errorMessage);
-        $this->setErrorType("Server");
+        $this->setErrorType('Server');
         $this->httpStatus = $httpStatus;
         $this->requestId = $requestId;
     }
@@ -27,5 +26,4 @@ class ServerException extends ClientException
     {
         return $this->requestId;
     }
-
 }
